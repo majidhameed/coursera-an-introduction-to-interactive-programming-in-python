@@ -20,7 +20,7 @@ This repository contains mini projects, assignments and their solutions. They we
 
 [Mini-Project - 6](http://www.codeskulptor.org/#user6-3mj65NxZGbL8iOU.py)
 
-[Mini-Project - 7](http://www.codeskulptor.org/#user7-a8hvL4IzwZwPlE3.py)
+[Mini-Project - 7](https://py2.codeskulptor.org/#user49_a8hvL4IzwZwPlE3_0.py)
 
 [Mini-Project - 8](http://www.codeskulptor.org/#user41_4GBFbSjgEwjyhkc.py)
 
