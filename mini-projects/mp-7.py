@@ -193,6 +193,9 @@ def draw(canvas):
     canvas.draw_image(nebula_image, nebula_info.get_center(), nebula_info.get_size(), [width/2, height/2], [width, height])
     canvas.draw_image(debris_image, [center[0]-wtime, center[1]], [size[0]-2*wtime, size[1]], 
                                 [width/2+1.25*wtime, height/2], [width-2.5*wtime, height])
+    if wtime == 0: 
+        wtime += 0.1
+    
     canvas.draw_image(debris_image, [size[0]-wtime, center[1]], [2*wtime, size[1]], 
                                 [1.25*wtime, height/2], [2.5*wtime, height])
     
@@ -234,28 +237,34 @@ def shoot_missile(shoot_count):
 def do_nothing(nothing):
     pass
 
-key_map = {
-    'left':  [turn,-1],
-    'right': [turn,1],
-    'up' : [thurst, True],
-    'leftku':  [turn,0],
-    'rightku': [turn,0],
-    'upku' : [thurst, False],
-    'space': [shoot_missile, 0],
-    'spaceku': [do_nothing, 0]
-}	
+key_down_map = {
+    'left':  [turn,-1], 
+    'right': [turn,1], 
+    'up' : [thurst, True], 
+    'space': [shoot_missile, 0]
+}
+
+key_up_map = {
+    'left':  [turn,0], 
+    'right': [turn,0], 
+    'up' : [thurst, False], 
+    'space': [do_nothing, 0]
+}       
+
 
 # ship control keyhanders
 def keydown(key):
-    for k in key_map:
+    for k in key_down_map:
         if key == simplegui.KEY_MAP[k]:
-            key_map[k][0](key_map[k][1])
+            key_down_map[k][0](key_down_map[k][1])
+            break
 
 def keyup(key):
-    for k in key_map:
+    for k in key_up_map:
         if key == simplegui.KEY_MAP[k]:
-            key_map[k+'ku'][0](key_map[k+'ku'][1])
-
+            key_up_map[k][0](key_up_map[k][1])
+            break
+            
 init_art()
 init()
 
@@ -274,3 +283,5 @@ timer = simplegui.create_timer(1000.0, rock_spawner)
 # get things rolling
 timer.start()
 frame.start()
+
+    
